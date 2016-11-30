@@ -2,13 +2,14 @@
 
 namespace AppBundle\Entity\Pokemon;
 
+use AppBundle\Entity\User\User;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * UserPokemonStats
  *
- * @ORM\Table(name="pokemon_user_pokemon_stats")
+ * @ORM\Table(name="user_pokemon_stats")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\Pokemon\UserPokemonStatsRepository")
  */
 class UserPokemonStats
@@ -23,9 +24,10 @@ class UserPokemonStats
     private $id;
 
     /**
-     * @var string
+     * @var User
      *
-     * @ORM\Column(name="user", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User\User", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
@@ -72,6 +74,13 @@ class UserPokemonStats
      */
     private $skills;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->skills = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -81,30 +90,6 @@ class UserPokemonStats
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set user
-     *
-     * @param string $user
-     *
-     * @return UserPokemonStats
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return string
-     */
-    public function getUser()
-    {
-        return $this->user;
     }
 
     /**
@@ -202,5 +187,62 @@ class UserPokemonStats
     {
         return $this->hp;
     }
-}
 
+    /**
+     * Set pokemon
+     *
+     * @param \AppBundle\Entity\Pokemon\Pokemon $pokemon
+     *
+     * @return UserPokemonStats
+     */
+    public function setPokemon(\AppBundle\Entity\Pokemon\Pokemon $pokemon)
+    {
+        $this->pokemon = $pokemon;
+
+        return $this;
+    }
+
+    /**
+     * Get pokemon
+     *
+     * @return \AppBundle\Entity\Pokemon\Pokemon
+     */
+    public function getPokemon()
+    {
+        return $this->pokemon;
+    }
+
+    /**
+     * Add skill
+     *
+     * @param \AppBundle\Entity\Pokemon\Skills $skill
+     *
+     * @return UserPokemonStats
+     */
+    public function addSkill(\AppBundle\Entity\Pokemon\Skills $skill)
+    {
+        $this->skills[] = $skill;
+
+        return $this;
+    }
+
+    /**
+     * Remove skill
+     *
+     * @param \AppBundle\Entity\Pokemon\Skills $skill
+     */
+    public function removeSkill(\AppBundle\Entity\Pokemon\Skills $skill)
+    {
+        $this->skills->removeElement($skill);
+    }
+
+    /**
+     * Get skills
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSkills()
+    {
+        return $this->skills;
+    }
+}

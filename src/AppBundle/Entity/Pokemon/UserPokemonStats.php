@@ -245,4 +245,28 @@ class UserPokemonStats
     {
         return $this->skills;
     }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User\User $user
+     *
+     * @return UserPokemonStats
+     */
+    public function setUser(\AppBundle\Entity\User\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }
