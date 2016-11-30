@@ -23,7 +23,7 @@ AppBundle\Entity\Pokemon\Pokemon:
     type:
       - '@feu'
   dracaufeu:
-    name: 'Reptincel'
+    name: 'Dracaufeu'
     type:
       - '@feu'
       - '@vol'
