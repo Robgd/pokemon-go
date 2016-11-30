@@ -1,0 +1,35 @@
+AppBundle\Entity\Pokemon\Type:
+  plante:
+    name: 'Plante'
+  poison:
+    name: 'Poison'
+  feu:
+    name: 'Feu'
+  vol:
+    name: 'Vol'
+  eau:
+    name: 'Eau'
+  insecte:
+    name: 'Insecte'
+  normal:
+    name: 'Normal'
+  electrik:
+    name: 'Electrik'
+  sol:
+    name: 'Sol'
+  fee:
+    name: 'Fée'
+  combat:
+    name: 'Combat'
+  psy:
+    name: 'Psy'
+  roche:
+    name: 'Roche'
+  acier:
+    name: 'Acier'
+  glace:
+    name: 'Glace'
+  spectre:
+    name: 'Spectre'
+  dragon:
+    name: 'Dragon'
