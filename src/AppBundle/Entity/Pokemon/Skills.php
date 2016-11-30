@@ -1,0 +1,128 @@
+<?php
+
+namespace AppBundle\Entity\Pokemon;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Skills
+ *
+ * @ORM\Table(name="skills")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Pokemon\SkillsRepository")
+ */
+class Skills
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, unique=true)
+     */
+    private $name;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="damage", type="integer")
+     */
+    private $damage;
+
+    /**
+     * @var Type
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Pokemon\Type", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $type;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Skills
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set damage
+     *
+     * @param integer $damage
+     *
+     * @return Skills
+     */
+    public function setDamage($damage)
+    {
+        $this->damage = $damage;
+
+        return $this;
+    }
+
+    /**
+     * Get damage
+     *
+     * @return int
+     */
+    public function getDamage()
+    {
+        return $this->damage;
+    }
+
+    /**
+     * Set type
+     *
+     * @param \AppBundle\Entity\Pokemon\Type $type
+     *
+     * @return Skills
+     */
+    public function setType(\AppBundle\Entity\Pokemon\Type $type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \AppBundle\Entity\Pokemon\Type
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+}

@@ -1,0 +1,206 @@
+<?php
+
+namespace AppBundle\Entity\Pokemon;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * UserPokemonStats
+ *
+ * @ORM\Table(name="pokemon_user_pokemon_stats")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Pokemon\UserPokemonStatsRepository")
+ */
+class UserPokemonStats
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="user", type="string", length=255)
+     */
+    private $user;
+
+    /**
+     * @var Pokemon
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Pokemon\Pokemon", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $pokemon;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="combatPoint", type="integer")
+     */
+    private $combatPoint;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="size", type="float")
+     */
+    private $size;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="weight", type="float")
+     */
+    private $weight;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="hp", type="integer")
+     */
+    private $hp;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Pokemon\Skills", cascade={"persist"})
+     */
+    private $skills;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set user
+     *
+     * @param string $user
+     *
+     * @return UserPokemonStats
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return string
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set combatPoint
+     *
+     * @param integer $combatPoint
+     *
+     * @return UserPokemonStats
+     */
+    public function setCombatPoint($combatPoint)
+    {
+        $this->combatPoint = $combatPoint;
+
+        return $this;
+    }
+
+    /**
+     * Get combatPoint
+     *
+     * @return int
+     */
+    public function getCombatPoint()
+    {
+        return $this->combatPoint;
+    }
+
+    /**
+     * Set size
+     *
+     * @param float $size
+     *
+     * @return UserPokemonStats
+     */
+    public function setSize($size)
+    {
+        $this->size = $size;
+
+        return $this;
+    }
+
+    /**
+     * Get size
+     *
+     * @return float
+     */
+    public function getSize()
+    {
+        return $this->size;
+    }
+
+    /**
+     * Set weight
+     *
+     * @param float $weight
+     *
+     * @return UserPokemonStats
+     */
+    public function setWeight($weight)
+    {
+        $this->weight = $weight;
+
+        return $this;
+    }
+
+    /**
+     * Get weight
+     *
+     * @return float
+     */
+    public function getWeight()
+    {
+        return $this->weight;
+    }
+
+    /**
+     * Set hp
+     *
+     * @param integer $hp
+     *
+     * @return UserPokemonStats
+     */
+    public function setHp($hp)
+    {
+        $this->hp = $hp;
+
+        return $this;
+    }
+
+    /**
+     * Get hp
+     *
+     * @return int
+     */
+    public function getHp()
+    {
+        return $this->hp;
+    }
+}
+
