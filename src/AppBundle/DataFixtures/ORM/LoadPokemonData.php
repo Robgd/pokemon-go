@@ -28,5 +28,6 @@ class LoadPokemonData implements FixtureInterface
         }
 
         $manager->flush();
+
     }
 }
