@@ -3,7 +3,6 @@
 namespace AppBundle\Entity\User;
 
 use Doctrine\ORM\Mapping as ORM;
-use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * User
@@ -11,7 +10,7 @@ use FOS\UserBundle\Model\User as BaseUser;
  * @ORM\Table(name="`user`")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\User\UserRepository")
  */
-class User extends BaseUser
+class User
 {
     /**
      * @var int
@@ -21,6 +20,41 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="username", type="string")
+     */
+    protected $username;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string")
+     */
+    protected $email;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="enabled", type="boolean")
+     */
+    protected $enabled;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string")
+     */
+    protected $password;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="last_login", type="datetime")
+     */
+    protected $lastLogin;
 
     /**
      * @var int

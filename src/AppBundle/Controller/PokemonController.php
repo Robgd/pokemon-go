@@ -16,6 +16,10 @@ class PokemonController extends Controller
      */
     public function dummyAction()
     {
+        $pokemonBehavior = $this->get('behavior.pokemon');
+        $pokemonBehavior->createRandomPokemon();
+
+
         $manager = $this->getDoctrine()->getManager();
         $pokemonRepository = $manager->getRepository('AppBundle:Pokemon\Pokemon');
 

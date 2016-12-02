@@ -1,0 +1,4 @@
+services:
+  behavior.pokemon:
+    class: AppBundle\Behavior\PokemonBehavior
+    arguments: ['@doctrine.orm.entity_manager']
